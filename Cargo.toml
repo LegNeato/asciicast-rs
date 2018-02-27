@@ -1,0 +1,20 @@
+[package]
+name = "asciicast"
+version = "0.1.0"
+authors = ["Christian Legnitto <christian@legnitto.com>"]
+description = "A library for the Asciicast file format used by Asciinema."
+homepage = "https://github.com/LegNeato/asciicast-rs"
+repository = "https://github.com/LegNeato/asciicast-rs"
+readme = "README.md"
+keywords = ["asciicast", "asciinema", "ascii", "tty"]
+license = "MIT/Apache-2.0"
+
+[features]
+default = ["chrono_support"]
+chrono_support = ["chrono"]
+
+[dependencies]
+chrono = { version = "0.4", features = ["serde"], optional = true }
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
