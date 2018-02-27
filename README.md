@@ -21,7 +21,7 @@ extern crate asciicast;
 
 ### Usage
 
-This library exports [version 2][v2] of the `asciicast` format by default. [Version 1][v1] is available as a subcrate as `asciicast::v1`.
+This library exports [version 2][v2] of the `asciicast` format by default. [Version 1][v1] will eventually be available as a subcrate.
 
 #### Example (v2)
 
@@ -41,7 +41,7 @@ let entry = asciicast::Entry {
 println!("{:?}", entry);
 ```
 
-[asciicast]: https://github.com/Legneato/asciicast
+[asciicast]: https://github.com/LegNeato/asciicast-rs
 [asciinema]: https://asciinema.org
 [v1]: https://github.com/asciinema/asciinema/blob/develop/doc/asciicast-v1.md
 [v2]: https://github.com/asciinema/asciinema/blob/develop/doc/asciicast-v2.md
