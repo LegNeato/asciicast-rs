@@ -1,8 +1,8 @@
 # [asciicast]
 
-A Rust library for working with the [Asciicast][asciicast] file format.
-[Asciicast][asciicast] is used by [Asciinema][asciinema] to play back
-terminal recordings.
+A Rust library for working with the [Asciicast file format][versions].
+Asciicast is used by [Asciinema][asciinema] to play back terminal
+recordings.
 
 ### Installation
 
