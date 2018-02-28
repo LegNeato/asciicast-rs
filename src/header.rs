@@ -7,23 +7,23 @@ use chrono::{DateTime, Utc};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub struct Header {
-    version: u8,
-    width: u32,
-    height: u32,
+    pub version: u8,
+    pub width: u32,
+    pub height: u32,
     #[cfg(feature = "chrono")]
     #[serde(skip_serializing_if = "Option::is_none", with = "timestamp_format")]
-    timestamp: Option<DateTime<Utc>>,
+    pub timestamp: Option<DateTime<Utc>>,
     #[cfg(not(feature = "chrono"))]
     #[serde(skip_serializing_if = "Option::is_none")]
-    timestamp: Option<f64>,
+    pub timestamp: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    duration: Option<f64>,
+    pub duration: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    idle_time_limit: Option<f64>,
+    pub idle_time_limit: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    command: Option<String>,
+    pub command: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    title: Option<String>,
+    pub title: Option<String>,
     // TODO: env.
     //env: HashMap<EnvVar, Option<String>>,
     // TODO: Theme.

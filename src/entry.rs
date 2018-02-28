@@ -9,9 +9,9 @@ const ENTRY_LENGTH: usize = 3;
 
 #[derive(Debug, PartialEq)]
 pub struct Entry {
-    time: f64,
-    event_type: EventType,
-    event_data: String,
+    pub time: f64,
+    pub event_type: EventType,
+    pub event_data: String,
 }
 
 impl Serialize for Entry {
