@@ -30,10 +30,6 @@ This library exports [version 2][v2] of the `asciicast` format by default. [Vers
 ```rust
 extern crate asciicast;
 
-use asciicast;
-use std::str::FromStr;
-use std::string::ToString;
-
 let entry = asciicast::Entry {
     time: 1.234,
     event_type: asciicast::EventType::Output,
