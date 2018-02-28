@@ -5,7 +5,7 @@ extern crate chrono;
 #[cfg(feature = "chrono")]
 use chrono::{DateTime, Utc};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub struct Header {
     version: u8,
     width: u32,
@@ -57,5 +57,50 @@ mod timestamp_format {
             // work in serde.
             _ => Ok(None),
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use serde_json;
+    use super::Header;
+
+    #[test]
+    fn test_deserializes_with_optional_data() {
+        // TODO: Figure out why with chrono integration we need this extra
+        // `timestamp`. Using `cargo test --no-default-features` works fine.
+        let data = r#"{"version":2, "width":80, "height":40, "timestamp": null}"#;
+        let h: Header = serde_json::from_str(data).unwrap();
+        assert_eq!(
+            h,
+            Header {
+                version: 2,
+                width: 80,
+                height: 40,
+                timestamp: None,
+                duration: None,
+                idle_time_limit: None,
+                command: None,
+                title: None,
+            }
+        );
+    }
+
+    #[test]
+    fn test_serializes_with_optional_data() {
+        let h = Header {
+            version: 2,
+            width: 42,
+            height: 100,
+            timestamp: None,
+            duration: None,
+            idle_time_limit: None,
+            command: None,
+            title: None,
+        };
+
+        // Serialize it to a JSON string.
+        let result = serde_json::to_string(&h).unwrap();
+        assert_eq!(result, r#"{"version":2,"width":42,"height":100}"#);
     }
 }

@@ -2,7 +2,7 @@ extern crate serde;
 use serde::ser::{Serialize, Serializer};
 use serde::de::{Deserialize, Deserializer, Error as DeserializeError, Unexpected};
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum EventType {
     Input,
     Output,

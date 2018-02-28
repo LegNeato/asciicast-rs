@@ -7,7 +7,7 @@ use event::EventType;
 
 const ENTRY_LENGTH: usize = 3;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct Entry {
     time: f64,
     event_type: EventType,
@@ -69,5 +69,39 @@ impl<'de> Visitor<'de> for EntryVisitor {
             event_type,
             event_data,
         })
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use serde_json;
+    use super::Entry;
+    use event::EventType;
+
+    #[test]
+    fn test_deserializes() {
+        let data = r#"[1.234, "i", "whatever"]"#;
+        let e: Entry = serde_json::from_str(data).unwrap();
+        assert_eq!(
+            e,
+            Entry {
+                time: 1.234,
+                event_type: EventType::Input,
+                event_data: "whatever".to_string(),
+            }
+        );
+    }
+
+    #[test]
+    fn test_serializes() {
+        let e = Entry {
+            time: 0.5,
+            event_type: EventType::Output,
+            event_data: "test".to_string(),
+        };
+
+        // Serialize it to a JSON string.
+        let result = serde_json::to_string(&e).unwrap();
+        assert_eq!(result, r#"[0.5,"o","test"]"#);
     }
 }
