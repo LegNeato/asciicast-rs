@@ -7,22 +7,33 @@ use chrono::{DateTime, Utc};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub struct Header {
+    /// `asciicast` format version.
     pub version: u8,
+    /// Initial terminal width (number of columns).
     pub width: u32,
+    /// Initial terminal height (number of rows).
     pub height: u32,
     #[cfg(feature = "chrono")]
     #[serde(skip_serializing_if = "Option::is_none", with = "timestamp_format")]
+    /// Time of the beginning of the recording session.
     pub timestamp: Option<DateTime<Utc>>,
     #[cfg(not(feature = "chrono"))]
     #[serde(skip_serializing_if = "Option::is_none")]
+    /// Unix timestamp of the beginning of the recording session.
     pub timestamp: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    /// Duration of the whole recording in seconds (when it's known upfront).
     pub duration: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    /// Idle time limit, as given via `-i` option to `asciinema rec`.
+    /// This should be used by an asciicast player to reduce all terminal inactivity
+    /// (delays between frames) to maximum of `idle_time_limit` value.
     pub idle_time_limit: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    /// Command that was recorded, as given via `-c` option to `asciinema rec`.
     pub command: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    /// Title of the asciicast, as given via `-t` option to `asciinema rec`.
     pub title: Option<String>,
     // TODO: env.
     //env: HashMap<EnvVar, Option<String>>,

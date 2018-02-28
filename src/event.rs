@@ -4,7 +4,10 @@ use serde::de::{Deserialize, Deserializer, Error as DeserializeError, Unexpected
 
 #[derive(Debug, PartialEq)]
 pub enum EventType {
+    /// Represents character(s) typed in by the user, or more specifically, data sent from
+    /// terminal emulator to `stdin` of the recorded shell.
     Input,
+    /// Represents printing new data to terminal's `stdout`.
     Output,
 }
 

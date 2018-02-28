@@ -9,6 +9,8 @@ const ENTRY_LENGTH: usize = 3;
 
 #[derive(Debug, PartialEq)]
 pub struct Entry {
+    /// Indicates when this event happened, represented as the number of seconds since the
+    /// beginning of the recording session.
     pub time: f64,
     pub event_type: EventType,
     pub event_data: String,
