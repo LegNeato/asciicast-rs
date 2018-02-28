@@ -1,5 +1,7 @@
 # [asciicast]
 
+[![Build Status](https://travis-ci.org/LegNeato/asciicast-rs.svg?branch=master)](https://travis-ci.org/LegNeato/asciicast-rs)
+
 A Rust library for working with the [Asciicast file format][versions].
 Asciicast is used by [Asciinema][asciinema] to play back terminal
 recordings.
