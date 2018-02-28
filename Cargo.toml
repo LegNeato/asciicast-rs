@@ -1,6 +1,6 @@
 [package]
 name = "asciicast"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Christian Legnitto <christian@legnitto.com>"]
 description = "A library for the Asciicast file format used by Asciinema."
 homepage = "https://github.com/LegNeato/asciicast-rs"
