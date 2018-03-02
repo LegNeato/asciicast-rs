@@ -49,9 +49,9 @@ mod timestamp_format {
     where
         S: Serializer,
     {
-        match date {
-            &Some(x) => serializer.serialize_i64(x.timestamp()),
-            &None => serializer.serialize_none(),
+        match *date {
+            Some(x) => serializer.serialize_i64(x.timestamp()),
+            None => serializer.serialize_none(),
         }
     }
 
