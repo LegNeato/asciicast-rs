@@ -18,3 +18,10 @@ chrono = { version = "0.4", features = ["serde"], optional = true }
 serde = "1.0"
 serde_derive = "1.0"
 serde_json = "1.0"
+
+[package.metadata.release]
+dev-version-ext = "pre"
+pre-release-commit-message = "Release {{version}}"
+pro-release-commit-message = "Bump version to {{version}}"
+tag-prefix = "v"
+tag-message = "Release {{prefix}}{{version}}"
