@@ -21,6 +21,9 @@ serde_json = "1.0"
 
 [package.metadata.release]
 dev-version-ext = "pre"
+pre-release-replacements = [
+  { file="README.md", search="asciicast = \"[a-z0-9\\.-]+\"", replace="asciicast = \"{{version}}\"" },
+]
 pre-release-commit-message = "Release {{version}}"
 pro-release-commit-message = "Bump version to {{version}}"
 tag-prefix = "v"
