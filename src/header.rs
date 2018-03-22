@@ -5,6 +5,8 @@ extern crate chrono;
 #[cfg(feature = "chrono")]
 use chrono::{DateTime, Utc};
 
+use std::collections::HashMap;
+
 #[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub struct Header {
     /// `asciicast` format version.
@@ -35,9 +37,10 @@ pub struct Header {
     #[serde(skip_serializing_if = "Option::is_none")]
     /// Title of the asciicast, as given via `-t` option to `asciinema rec`.
     pub title: Option<String>,
-    // TODO: env.
-    //env: HashMap<EnvVar, Option<String>>,
-    // TODO: Theme.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    /// Map of captured environment variables.
+    env: Option<HashMap<String, String>>,
+    // TODO: theme.
 }
 
 #[cfg(feature = "chrono")]
@@ -75,6 +78,7 @@ mod timestamp_format {
 mod tests {
     use serde_json;
     use super::Header;
+    use std::collections::HashMap;
 
     #[test]
     fn test_deserializes_with_optional_data() {
@@ -93,6 +97,7 @@ mod tests {
                 idle_time_limit: None,
                 command: None,
                 title: None,
+                env: None,
             }
         );
     }
@@ -108,10 +113,36 @@ mod tests {
             idle_time_limit: None,
             command: None,
             title: None,
+            env: None,
         };
 
         // Serialize it to a JSON string.
         let result = serde_json::to_string(&h).unwrap();
         assert_eq!(result, r#"{"version":2,"width":42,"height":100}"#);
+    }
+
+    #[test]
+    fn test_serializes_env() {
+        let mut env = HashMap::new();
+        env.insert("FOO".to_string(), "test".to_string());
+
+        let h = Header {
+            version: 2,
+            width: 42,
+            height: 100,
+            timestamp: None,
+            duration: None,
+            idle_time_limit: None,
+            command: None,
+            title: None,
+            env: Some(env),
+        };
+
+        // Serialize it to a JSON string.
+        let result = serde_json::to_string(&h).unwrap();
+        assert_eq!(
+            result,
+            r#"{"version":2,"width":42,"height":100,"env":{"FOO":"test"}}"#
+        );
     }
 }
