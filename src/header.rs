@@ -39,7 +39,7 @@ pub struct Header {
     pub title: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     /// Map of captured environment variables.
-    env: Option<HashMap<String, String>>,
+    pub env: Option<HashMap<String, String>>,
     // TODO: theme.
 }
 
