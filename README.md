@@ -12,7 +12,7 @@ recordings.
 
 ```toml
 [dependencies]
-asciicast = "0.1.1"
+asciicast = "0.2.0"
 ```
 
 Then include it in your code like this:
