@@ -2,7 +2,7 @@ extern crate serde;
 use serde::ser::{Serialize, Serializer};
 use serde::de::{Deserialize, Deserializer, Error as DeserializeError, Unexpected};
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Copy, Clone)]
 pub enum EventType {
     /// Represents character(s) typed in by the user, or more specifically, data sent from
     /// terminal emulator to `stdin` of the recorded shell.

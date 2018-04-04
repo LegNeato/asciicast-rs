@@ -7,7 +7,7 @@ use event::EventType;
 
 const ENTRY_LENGTH: usize = 3;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub struct Entry {
     /// Indicates when this event happened, represented as the number of seconds since the
     /// beginning of the recording session.

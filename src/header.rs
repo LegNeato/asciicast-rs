@@ -7,7 +7,7 @@ use chrono::{DateTime, Utc};
 
 use std::collections::HashMap;
 
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 pub struct Header {
     /// `asciicast` format version.
     pub version: u8,
