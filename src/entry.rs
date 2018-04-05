@@ -7,12 +7,16 @@ use std::fmt;
 
 const ENTRY_LENGTH: usize = 3;
 
+/// Terminal input or output data and the time it happened.
+/// [[spec](https://github.com/asciinema/asciinema/blob/develop/doc/asciicast-v2.md#event-stream)]
 #[derive(Debug, PartialEq, Clone)]
 pub struct Entry {
     /// Indicates when this event happened, represented as the number of seconds since the
     /// beginning of the recording session.
     pub time: f64,
+    /// The type of event.
     pub event_type: EventType,
+    /// Event-specific data. See [`EventType`](self::EventType) for details.
     pub event_data: String,
 }
 

@@ -2,6 +2,8 @@ extern crate serde;
 use serde::de::{Deserialize, Deserializer, Error as DeserializeError, Unexpected};
 use serde::ser::{Serialize, Serializer};
 
+/// The types of events that can be recorded.
+/// [[spec](https://github.com/asciinema/asciinema/blob/develop/doc/asciicast-v2.md#supported-event-types)]
 #[derive(Debug, PartialEq, Copy, Clone)]
 pub enum EventType {
     /// Represents character(s) typed in by the user, or more specifically, data sent from

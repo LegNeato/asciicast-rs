@@ -7,6 +7,8 @@ use chrono::{DateTime, Utc};
 
 use std::collections::HashMap;
 
+/// JSON-encoded object containing recording meta-data.
+/// [[spec](https://github.com/asciinema/asciinema/blob/develop/doc/asciicast-v2.md#header)]
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 pub struct Header {
     /// `asciicast` format version.
