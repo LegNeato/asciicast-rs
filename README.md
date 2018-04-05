@@ -25,6 +25,8 @@ extern crate asciicast;
 
 This library exports [version 2][v2] of the `asciicast` format by default. [Version 1][v1] will eventually be available as a subcrate.
 
+[Api documentation](https://docs.rs/asciicast).
+
 #### Example (v2)
 
 ```rust
