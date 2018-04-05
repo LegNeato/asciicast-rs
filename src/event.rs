@@ -1,6 +1,6 @@
 extern crate serde;
-use serde::ser::{Serialize, Serializer};
 use serde::de::{Deserialize, Deserializer, Error as DeserializeError, Unexpected};
+use serde::ser::{Serialize, Serializer};
 
 #[derive(Debug, PartialEq, Copy, Clone)]
 pub enum EventType {

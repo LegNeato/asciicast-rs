@@ -76,8 +76,8 @@ mod timestamp_format {
 
 #[cfg(test)]
 mod tests {
-    use serde_json;
     use super::Header;
+    use serde_json;
     use std::collections::HashMap;
 
     #[test]

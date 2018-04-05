@@ -1,9 +1,9 @@
 extern crate serde;
 use serde::ser::{Serialize, SerializeSeq, Serializer};
 
-use std::fmt;
-use serde::de::{Deserialize, Deserializer, Error as DeserializeError, Visitor};
 use event::EventType;
+use serde::de::{Deserialize, Deserializer, Error as DeserializeError, Visitor};
+use std::fmt;
 
 const ENTRY_LENGTH: usize = 3;
 
@@ -76,9 +76,9 @@ impl<'de> Visitor<'de> for EntryVisitor {
 
 #[cfg(test)]
 mod tests {
-    use serde_json;
     use super::Entry;
     use event::EventType;
+    use serde_json;
 
     #[test]
     fn test_deserializes() {
