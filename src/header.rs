@@ -1,9 +1,8 @@
 extern crate serde;
 
 #[cfg(feature = "chrono")]
-extern crate chrono;
-#[cfg(feature = "chrono")]
 use chrono::{DateTime, Utc};
+use serde::{Deserialize, Serialize};
 
 use std::collections::HashMap;
 

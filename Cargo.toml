@@ -1,6 +1,7 @@
 [package]
 name = "asciicast"
 version = "0.2.3-pre"
+edition = "2018"
 authors = ["Christian Legnitto <christian@legnitto.com>"]
 description = "A library for the Asciicast file format used by Asciinema."
 homepage = "https://github.com/LegNeato/asciicast-rs"
@@ -15,8 +16,7 @@ chrono_support = ["chrono"]
 
 [dependencies]
 chrono = { version = "0.4", features = ["serde"], optional = true }
-serde = "1.0"
-serde_derive = "1.0"
+serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 
 [package.metadata.release]
