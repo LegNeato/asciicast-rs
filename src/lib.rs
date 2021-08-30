@@ -5,17 +5,12 @@ pub use entry::*;
 pub use event::*;
 pub use header::*;
 
-#[cfg(feature = "chrono")]
-extern crate chrono;
-
-extern crate serde;
-#[macro_use]
-extern crate serde_derive;
-extern crate serde_json;
+use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "UPPERCASE")]
 enum EnvVar {
-    SHELL,
-    TERM,
+    Shell,
+    Term,
     Custom(String),
 }
